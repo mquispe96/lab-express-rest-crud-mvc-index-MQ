@@ -7,11 +7,11 @@ const eventsController = require('./controllers/special-events.controller.js');
 const app = express();
 
 app.get('/', (req, res) => res.send('Hello, world!'));
-app.use('/', locationsController);
-app.use('/', peopleController);
-app.use('/', plansController);
-app.use('/', machinesController);
-app.use('/', eventsController);
-app.use((req, res) => res.status(404).send('Sorry, no page found!'));
+app.use('/locations', locationsController);
+app.use('/machines', peopleController);
+app.use('/persons', plansController);
+app.use('/plans', machinesController);
+app.use('/special-events', eventsController);
+app.use('*', (req, res) => res.status(404).send({error: 'Sorry, no page found!'}));
 
 module.exports = app;
